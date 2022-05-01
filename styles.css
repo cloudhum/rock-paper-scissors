@@ -1,0 +1,26 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display:flex;
+    text-align: center;
+    flex-direction:column;
+    background-color: rgba(247, 245, 245, 0.886);
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.scores-Container{
+    display:flex;
+    gap:50px;
+    justify-content: center;
+}
+
+.result{
+    border: thin solid palegreen;
+    min-height: 1rem;
+    min-width: 3.5rem;
+}
+
+button{
+    font-family: inherit;
+}
