@@ -9,18 +9,36 @@ body{
     
 }
 
-.scores-Container{
+h1 {
+    color:palegreen;
+    -webkit-text-stroke: 1px black;
+}
+
+h3 {
+    margin-top: 0px;
+}
+
+.scores-Container {
     display:flex;
     gap:50px;
     justify-content: center;
 }
 
-.result{
-    border: thin solid palegreen;
-    min-height: 1rem;
-    min-width: 3.5rem;
+.result {
+    border: thick solid palegreen;
+    min-height: 1.3rem;
+    min-width: 4rem;
+}
+
+.player {
+    font-weight: bold;
 }
 
 button{
     font-family: inherit;
+    padding: 10px 20px;
+    margin:5px;
+    background-color: palegreen;
 }
+
+

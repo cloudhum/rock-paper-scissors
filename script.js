@@ -1,3 +1,7 @@
+/*
+    TODO: create helper function to be called in playRound that cuts down on code repetition
+ */
+
 function computerPlay() {
     //randomly return either 'Rock', 'Paper' or "Scissors" for the computer's move
     const ROCK = 1;
@@ -15,7 +19,7 @@ function computerPlay() {
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
     computerMoveResult.style.backgroundColor = "rgba(247, 245, 245, 0.886)"
-        playerMoveResult.style.backgroundColor = "rgba(247, 245, 245, 0.886)"
+    playerMoveResult.style.backgroundColor = "rgba(247, 245, 245, 0.886)"
     console.log(computerSelection);
 
     if (playerSelection == "rock" && computerSelection == "rock") {
@@ -23,7 +27,7 @@ function playRound(playerSelection) {
         playerMoveResult.textContent = "rock"
         winnerResult.textContent = "Tie!"
         computerTally++;
-        playerTally++; 
+        playerTally++;
         computerMoveResult.style.backgroundColor = "palegreen"
         playerMoveResult.style.backgroundColor = "palegreen"
         playerTotal.textContent = `${playerTally}`
@@ -42,7 +46,7 @@ function playRound(playerSelection) {
         playerMoveResult.textContent = "rock"
         playerMoveResult.style.backgroundColor = "palegreen"
         winnerResult.textContent = "You Win! Rock beats Scissors"
-        playerTally++; 
+        playerTally++;
         playerTotal.textContent = `${playerTally}`
     }
     else if (playerSelection == "paper" && computerSelection == "rock") {
@@ -50,7 +54,7 @@ function playRound(playerSelection) {
         playerMoveResult.textContent = "paper"
         playerMoveResult.style.backgroundColor = "palegreen"
         winnerResult.textContent = "You Win! Paper beats Rock"
-        playerTally++; 
+        playerTally++;
         playerTotal.textContent = `${playerTally}`
     }
     else if (playerSelection == "paper" && computerSelection == "paper") {
@@ -70,14 +74,14 @@ function playRound(playerSelection) {
         computerMoveResult.style.backgroundColor = "palegreen"
         winnerResult.textContent = "You Lose! Scissors beats Paper"
         computerTally++;
-        computerTotal.textContent = `${computerTally}` 
+        computerTotal.textContent = `${computerTally}`
     }
     else if (playerSelection == "scissors" && computerSelection == "rock") {
         computerMoveResult.textContent = "rock"
         playerMoveResult.textContent = "scissors"
         computerMoveResult.style.backgroundColor = "palegreen"
         winnerResult.textContent = "You Lose! Rock beats Scissors"
-        computerTally++; 
+        computerTally++;
         computerTotal.textContent = `${computerTally}`
     }
     else if (playerSelection == "scissors" && computerSelection == "paper") {
@@ -85,7 +89,7 @@ function playRound(playerSelection) {
         playerMoveResult.textContent = "scissors"
         playerMoveResult.style.backgroundColor = "palegreen"
         winnerResult.textContent = "You Win! Scissors beats Paper"
-        playerTally++; 
+        playerTally++;
         playerTotal.textContent = `${playerTally}`
     }
     else if (playerSelection == "scissors" && computerSelection == "scissors") {
@@ -97,16 +101,37 @@ function playRound(playerSelection) {
         computerTally++;
         playerTally++;
         playerTotal.textContent = `${playerTally}`
-        computerTotal.textContent = `${computerTally}` 
+        computerTotal.textContent = `${computerTally}`
     }
 
-    if (computerTally >= 5 && playerTally >= 5) alert ("Tie");
-    else if (computerTally >= 5) alert ("Computer wins");
-    else if (playerTally >= 5) alert ("Player wins");
+    if (computerTally >= 5 && playerTally >= 5) {
+        alert("Tie");
+        resetGame();
+    }
+    else if (computerTally >= 5) {
+        alert("Computer wins");
+        resetGame();
+    }
+    else if (playerTally >= 5) {
+        alert("Player wins");
+        resetGame();
+    }
+}
+
+function resetGame() {
+    playerTally = 0;
+    computerTally = 0;
+    computerMoveResult.textContent = ""
+    playerMoveResult.textContent = ""
+    computerMoveResult.style.backgroundColor = "rgba(247, 245, 245, 0.886)"
+    playerMoveResult.style.backgroundColor = "rgba(247, 245, 245, 0.886)"
+    winnerResult.textContent = "First to 5 points wins!"
+    playerTotal.textContent = `${playerTally}`
+    computerTotal.textContent = `${computerTally}`
 }
 
 let computerTally = 0;
-let playerTally = 0; 
+let playerTally = 0;
 
 buttonRock.addEventListener('click', function () {
     playRound("rock");
