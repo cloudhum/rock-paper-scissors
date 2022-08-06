@@ -106,19 +106,42 @@ function playRound(playerSelection) {
 
     if (computerTally >= 5 && playerTally >= 5) {
         alert("Tie");
-        resetGame();
+        addResetGameButton();
     }
     else if (computerTally >= 5) {
         alert("Computer wins");
-        resetGame();
+        addResetGameButton();
     }
     else if (playerTally >= 5) {
         alert("Player wins");
-        resetGame();
+        addResetGameButton();
     }
 }
 
+function addResetGameButton() {
+    // construct a button and prepare it to be added to the page
+    var buttonResetGame = document.createElement("button");
+    buttonResetGame.id = "buttonResetGame";;
+    buttonResetGame.innerHTML = "Reset Game";
+
+    // disable the gameplay buttons since the game is over
+    document.getElementById("buttonRock").disabled = true;
+    document.getElementById("buttonPaper").disabled = true;
+    document.getElementById("buttonScissors").disabled = true;
+
+    // add the reset button to the page and add an event listener for it
+    document.body.appendChild(buttonResetGame);
+    buttonResetGame.addEventListener('click', function () {
+        resetGame();
+    });
+}
+
 function resetGame() {
+    var buttonResetGame = document.getElementById("buttonResetGame");
+    buttonResetGame.parentNode.removeChild(buttonResetGame);
+    document.getElementById("buttonRock").disabled = false;
+    document.getElementById("buttonPaper").disabled = false;
+    document.getElementById("buttonScissors").disabled = false;
     playerTally = 0;
     computerTally = 0;
     computerMoveResult.textContent = ""
@@ -142,4 +165,3 @@ buttonPaper.addEventListener('click', function () {
 buttonScissors.addEventListener('click', function () {
     playRound("scissors");
 });
-
